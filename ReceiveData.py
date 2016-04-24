@@ -8,6 +8,7 @@ ser = serial.Serial('COM7', 9600, timeout=5)
 sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser))
 hello = sio.readline()
 fo = open("logs.txt", "w")
+email = 0 
 
 try:
     while True:
@@ -21,6 +22,8 @@ try:
             jsonn += timenow
             jsonn += "'}\n"
             fo.write(jsonn)
+            hello = sio.readline()
+            print hello
             
 except KeyboardInterrupt:
     print 'interrupted!'
